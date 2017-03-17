@@ -1,9 +1,17 @@
 (function() {
     function SongPlayer() {
+        /*
+        * @desc Empty object
+        * @type {Object}
+        */
         var SongPlayer = {};
         
-        //two private attributes
+        /*
+        * @desc Current song selected
+        * @type {Object}
+        */
         var currentSong = null;
+        
         /*
         * @desc Buzz object audio file
         * @type {Object}
@@ -15,8 +23,6 @@
         * @desc Stops currently playing son and loads new audio file as currentBuzzObject
         * @param {Object} song
         */
-        
-        //one private function
         var setSong = function(song) {
             if (currentBuzzObject) {
                 currentBuzzObject.stop();
@@ -31,20 +37,38 @@
             currentSong = song;
         };
         
-        //public method
+        /*
+        * @function playSong
+        * @desc When play button is clicked, plays song and sets song.playing to true
+        * @param {Object} song
+        */
+        var playSong = function(song) {
+            currentBuzzObject.play();
+            song.playing = true;
+        };
+        
+        /*
+        * @method SongPlayer.play
+        * @desc Conditional to change to different song or pause current song
+        * @param {Object} song
+        */
         SongPlayer.play = function(song) {
             if (currentSong !== song) {
                 setSong(song);
-                currentBuzzObject.play();
-                song.playing = true;
+                playSong(song); //assignment function
             } else if (currentSong === song) {
                 if (currentBuzzObject.isPaused()) {
-                    currentBuzzObject.play();
+                    playSong(song); //assignment function
                 }
             }
         };
         
-        //public method
+        /*
+        * @method SongPlayer.pause
+        * @desc Pauses song that is playing
+        * @param {Object} song
+        * @returns {Object} SongPlayer
+        */
         SongPlayer.pause = function(song) {
             currentBuzzObject.pause();
             song.playing = false;
