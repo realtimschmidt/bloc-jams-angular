@@ -41,11 +41,11 @@
                 var seekBar = $(element);
                 
                 /*
-                * @function percentageString
+                * @function percentString
                 * @desc Determines position of seek bar
                 * @return {Number} + {String} 00%
                 */
-                var percentageString = function () {
+                var percentString = function () {
                     var value = scope.value;
                     var max = scope.max;
                     var percent = value / max * 100;
@@ -59,6 +59,15 @@
                 */
                 scope.fillStyle = function() {
                     return {width: percentString()};
+                };
+                
+                /*
+                * @function scope.thumbStyle
+                * @desc Returns the width of the seek bar thumb
+                * @return {Number} width of seek thumb
+                */
+                scope.thumbStyle = function() {
+                    return {left: percentString()};
                 };
                 
                 /*
