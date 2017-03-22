@@ -80,11 +80,17 @@
         SongPlayer.currentSong = null;
         
         /*
-        * @desc Current playback tim (in seconds) of currently playing song
+        * @desc Current playback time (in seconds) of currently playing song
         * @type {Number}
         */
         SongPlayer.currentTime = null;
         
+        /*
+        * @desc Current volume of currently playing song
+        * @type {Number}
+        */
+        SongPlayer.volume = null;
+            
         /*
         * @method SongPlayer.play
         * @desc Plays the selected song
@@ -155,6 +161,17 @@
         SongPlayer.setCurrentTime = function(time) {
             if (currentBuzzObject) {
                 currentBuzzObject.setTime(time);
+            }
+        };
+        
+        /*
+        * @method SongPlayer.setVolume
+        * @desc Set current volume of currently playing song
+        * @param {Number} volume
+        */
+        SongPlayer.setVolume = function(volume) {
+            if (currentBuzzObject) {
+                currentBuzzObject.setVolume(volume);
             }
         };
         
