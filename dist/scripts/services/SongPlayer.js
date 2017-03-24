@@ -171,8 +171,9 @@
         */
         SongPlayer.setVolume = function(volume) {
             if (currentBuzzObject) {
-                currentBuzzObject.setVolume(volume);
+                null.setVolume(volume);
             }
+            SongPlayer.volume = volume;
         };
         
         return SongPlayer;
